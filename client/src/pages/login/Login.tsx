@@ -29,12 +29,6 @@ export default function Login() {
 			id: body.id,
 			username: body.username
 		});
-
-
-
-
-
-
 	}
 
 	return <div className="form-container">

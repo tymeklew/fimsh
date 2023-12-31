@@ -19,9 +19,8 @@ function App() {
 				credentials: "include"
 			});
 
-			console.log(res.status);
-
 			if (res.status == 200) {
+				console.info("Logged in ");
 				let body = await res.json();
 				auth.setUser({ id: body.id, username: body.username });
 			}

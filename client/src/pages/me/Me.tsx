@@ -9,7 +9,7 @@ export default function Me() {
 	useEffect(() => {
 		console.log(user);
 		if (!user) {
-			navigate("/login")
+			navigate("/login");
 		}
 	}, [])
 
