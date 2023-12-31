@@ -30,7 +30,7 @@ pub struct SignUpForm {
 pub async fn sign_up(
     State(state): State<AppState>,
     Json(form): Json<SignUpForm>,
-) -> Result<Redirect, AppError> {
+) -> Result<StatusCode, AppError> {
     form.validate()?;
 
     let mut conn = state.pool.get().await?;
@@ -61,7 +61,7 @@ pub async fn sign_up(
         .execute(&mut conn)
         .await?;
 
-    Ok(Redirect::temporary("/login"))
+    Ok(StatusCode::CREATED)
 }
 
 #[derive(Deserialize)]

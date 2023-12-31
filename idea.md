@@ -1,0 +1,1 @@
+On your note page allow to share and either static cannot be edited and only viewed or through websockets most likley you can share and collaborate but for this you are going to require to make an account because i want data in exchange for cool stuff

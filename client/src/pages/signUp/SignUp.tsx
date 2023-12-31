@@ -1,23 +1,45 @@
 import React, { useState } from "react";
 import "./style.css"
+import { redirect } from "react-router-dom";
 
 export default function SignUp() {
 	const [email, setEmail] = useState('');
+	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 
 	async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
 		e.preventDefault();
+
+		let res = await fetch("/api/auth/signup", {
+			method: "POST",
+			body: JSON.stringify({ email, username, password }),
+			headers: {
+				"Content-Type": "application/json"
+			}
+		})
+
+		switch (res.status) {
+			case 201: return redirect("/login")
+		}
+
 	}
 
 	return <div className="form-container">
-		<form className="form login-form" onSubmit={handleSubmit}>
-			<h1> Login </h1>
+		<form className="form signup-form" onSubmit={handleSubmit}>
+			<h1> Sign Up </h1>
 			<input
 				type="text"
 				placeholder="Email"
-				className="form-input"
+				className="form-input email"
 				value={email}
 				onChange={(e) => setEmail(e.target.value)}
+			/>
+			<input
+				type="text"
+				placeholder="Username"
+				className="form-input"
+				value={username}
+				onChange={(e) => setUsername(e.target.value)}
 			/>
 			<input
 				type="password"

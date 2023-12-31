@@ -29,6 +29,11 @@
 	font-size: 1.2rem;
 }
 
+.navbar-links a.active {
+	font-weight: bold;
+	opacity: 1;
+}
+
 .navbar-links a:hover {
 	opacity: 1;
 }

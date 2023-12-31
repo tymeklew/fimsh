@@ -13,13 +13,13 @@ pub enum AppError {
     Dotenv(#[from] dotenvy::Error),
     #[error("Failed to load enviroment variable : {0}")]
     VarError(#[from] VarError),
-    #[error("Something went wrong with the database")]
+    #[error("Pool error : {0}")]
     PoolError(#[from] PoolError),
-    #[error("Something went wrong with the database")]
+    #[error("Some run error : {0}")]
     RunError(#[from] RunError),
     #[error("Diesel fucked something up : {0}")]
     Diesel(#[from] diesel::result::Error),
-    #[error("Some validation errorr")]
+    #[error("Some validation errorr : {0}")]
     Validate(#[from] ValidationErrors),
     #[error("Bcrypt errror")]
     Bcrypt(#[from] BcryptError),

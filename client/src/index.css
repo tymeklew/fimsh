@@ -42,3 +42,7 @@ button {
 	justify-content: center;
 	gap: 1rem;
 }
+
+.error {
+	color: red;
+}
