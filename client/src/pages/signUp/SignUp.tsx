@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./style.css"
 import { redirect } from "react-router-dom";
 
 export default function SignUp() {
@@ -18,6 +17,8 @@ export default function SignUp() {
 			}
 		})
 
+		console.log(res.status);
+
 		switch (res.status) {
 			case 201: return redirect("/login")
 		}
@@ -33,6 +34,7 @@ export default function SignUp() {
 				className="form-input email"
 				value={email}
 				onChange={(e) => setEmail(e.target.value)}
+				required
 			/>
 			<input
 				type="text"
@@ -40,6 +42,7 @@ export default function SignUp() {
 				className="form-input"
 				value={username}
 				onChange={(e) => setUsername(e.target.value)}
+				required
 			/>
 			<input
 				type="password"
@@ -47,6 +50,7 @@ export default function SignUp() {
 				className="form-input"
 				value={password}
 				onChange={(e) => setPassword(e.target.value)}
+				required
 			/>
 			<button type="submit" className="form-submit"> Sign Up </button>
 		</form>

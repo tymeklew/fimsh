@@ -16,7 +16,7 @@ const AuthProvider = (props: { children: ReactNode }) => {
 	const [user, setUser] = useState<User | null>(null);
 
 	return (
-		<AuthContext.Provider value={{ user: user, setUser: setUser }}>
+		<AuthContext.Provider value={{ user, setUser }}>
 			{props.children}
 		</AuthContext.Provider>
 	);

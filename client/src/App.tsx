@@ -22,8 +22,10 @@ function App() {
 			if (res.status == 200) {
 				console.info("Logged in ");
 				let body = await res.json();
+				console.log("Body : ", body);
 				auth.setUser({ id: body.id, username: body.username });
 			}
+			console.log("Ok : ", auth.user);
 		} catch { }
 	}
 

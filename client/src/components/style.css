@@ -23,7 +23,8 @@
 	width: fit-content;
 }
 
-.navbar-links a {
+.navbar-links * {
+	cursor: pointer;
 	opacity: 0.8;
 	transition: ease-in-out;
 	font-size: 1.2rem;
@@ -34,6 +35,6 @@
 	opacity: 1;
 }
 
-.navbar-links a:hover {
+.navbar-links *:hover {
 	opacity: 1;
 }

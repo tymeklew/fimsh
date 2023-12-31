@@ -3,6 +3,7 @@ use bcrypt::BcryptError;
 use diesel_async::pooled_connection::{bb8::RunError, PoolError};
 use std::env::VarError;
 use tracing::error;
+use uuid::Error as UuidError;
 use validator::ValidationErrors;
 
 use thiserror::Error;
@@ -21,8 +22,10 @@ pub enum AppError {
     Diesel(#[from] diesel::result::Error),
     #[error("Some validation errorr : {0}")]
     Validate(#[from] ValidationErrors),
-    #[error("Bcrypt errror")]
+    #[error("Bcrypt errror : {0}")]
     Bcrypt(#[from] BcryptError),
+    #[error("Failed to parse uuid : {0}")]
+    Uuid(#[from] UuidError),
     #[error("Just some status code : {0}")]
     Status(StatusCode),
 }

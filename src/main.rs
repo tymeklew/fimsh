@@ -47,6 +47,7 @@ async fn main() -> Result<(), AppError> {
             "/api",
             Router::new()
                 .route("/account/me", get(account::me))
+                .route("/auth/logout", post(auth::sign_out))
                 .route_layer(middleware::from_fn_with_state(
                     state.clone(),
                     util::authorization,
