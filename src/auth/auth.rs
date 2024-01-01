@@ -8,7 +8,8 @@ use crate::{
     error::AppError,
     AppState,
 };
-use axum::{extract::State, http::StatusCode, response::Redirect, Extension, Json};
+
+use axum::{extract::State, http::StatusCode, Json};
 use axum_extra::extract::{cookie::Cookie, CookieJar};
 use bcrypt::{hash, verify, DEFAULT_COST};
 use diesel::{BoolExpressionMethods, ExpressionMethods, OptionalExtension, QueryDsl};

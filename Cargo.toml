@@ -12,6 +12,7 @@ bcrypt = "0.15.0"
 diesel = {version = "2.1.4" , features = ["postgres" , "uuid"]}
 diesel-async = {version = "0.4.1" , features = ["postgres" , "bb8"]}
 dotenvy = "0.15.7"
+nanoid = "0.4.0"
 serde = {version = "1.0.193" , features = ["derive"]}
 thiserror = "1.0.52"
 tokio = {version = "1.35.1" , features = ["macros" , "rt-multi-thread"]}
