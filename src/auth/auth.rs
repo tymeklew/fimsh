@@ -8,6 +8,7 @@ use crate::{
     error::AppError,
     AppState,
 };
+
 use axum::{extract::State, http::StatusCode, Json};
 use axum_extra::extract::{cookie::Cookie, CookieJar};
 use bcrypt::{hash, verify, DEFAULT_COST};
@@ -109,4 +110,24 @@ pub async fn login(
     cookie.set_http_only(true);
 
     Ok(jar.add(cookie))
+}
+
+pub async fn sign_out(
+    State(state): State<AppState>,
+    jar: CookieJar,
+) -> Result<CookieJar, AppError> {
+    let session_id = Uuid::parse_str(
+        jar.get("session_id")
+            .ok_or(StatusCode::UNAUTHORIZED)?
+            .value(),
+    )?;
+
+    let mut conn = state.pool.get().await?;
+
+    diesel::delete(sessions::table)
+        .filter(sessions::id.eq(session_id))
+        .execute(&mut conn)
+        .await?;
+
+    Ok(jar.remove(Cookie::from("session_id")))
 }
